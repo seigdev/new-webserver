@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const port = 3000;
@@ -30,6 +31,7 @@ db.on("connected", () => {
   console.log("Databases connection established.");
 });
 
+app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
